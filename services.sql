@@ -27,6 +27,7 @@ CREATE TABLE service(
 	subcategory_name	VARCHAR(255),
 	name 				VARCHAR(255) 	NOT NULL,
 	description 		TEXT,
+	available_at		avalable_palce_enum,
 	image_uri			TEXT,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
