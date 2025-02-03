@@ -13,6 +13,8 @@ CREATE TABLE specialist(
     location            POINT,
     operating_radius    SMALLINT        CHECK(operating_radius > 0),
     service_category_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (city_id)               REFERENCES city(id)     ON DELETE SET NULL,
     FOREIGN KEY (service_category_id)   REFERENCES category(id) ON DELETE SET NULL
@@ -24,8 +26,13 @@ CREATE TABLE specialist_service(
     specialist_id   INT NOT NULL,
     avalable_at     available_place_enum,
     offered_price   DECIMAL(12, 2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     PRIMARY KEY (service_id, specialist_id),
     FOREIGN KEY (service_id)    REFERENCES service(id)      ON DELETE CASCADE,
     FOREIGN KEY (specialist_id) REFERENCES specialist(id)   ON DELETE CASCADE
 )
+
+-- DROP TABLE specialist_service;
+-- DROP TABLE specialist;
