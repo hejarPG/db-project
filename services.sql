@@ -4,7 +4,8 @@ CREATE TABLE category(
 	image_uri	TEXT,
 	max_price	DECIMAL(12, 2),
 	min_price	DECIMAL(12, 2),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -15,7 +16,8 @@ CREATE TABLE subcategory(
 
 	PRIMARY KEY (category_id, name),
 	FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -26,14 +28,15 @@ CREATE TABLE service(
 	name 				VARCHAR(255) 	NOT NULL,
 	description 		TEXT,
 	image_uri			TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
 	UNIQUE (category_id, subcategory_name, name),
 	FOREIGN KEY (category_id, subcategory_name) REFERENCES subcategory(category_id, name)
 );
 
--- DROP TABLE service;
--- DROP TABLE subcategory;
--- DROP TABLE category;
+-- DROP TABLE service CASCADE;
+-- DROP TABLE subcategory CASCADE;
+-- DROP TABLE category CASCADE;
 
 -- SELECT * FROM service
