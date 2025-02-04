@@ -8,6 +8,7 @@ CREATE TABLE specialist(
     first_name          VARCHAR(100)    NOT NULL,
     last_name           VARCHAR(100)    NOT NULL,
     phone_number        VARCHAR(20)     UNIQUE NOT NULL,
+    sex                 sex_enum,
     image_uri           TEXT,
     city_id             INT,
     location            POINT,
