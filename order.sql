@@ -1,4 +1,4 @@
-CREATE TABLE order(
+CREATE TABLE "order"(
     id              SERIAL      PRIMARY KEY,
     customer_id     INT,
     service_id      INT,
@@ -21,14 +21,13 @@ CREATE TABLE offer(
     updated_at                  TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
 
     PRIMARY KEY (order_id, specialist_id),
-    FOREIGN KEY (order_id)      REFERENCES order(id)        ON DELETE CASCADE,
+    FOREIGN KEY (order_id)      REFERENCES "order"(id)        ON DELETE CASCADE,
     FOREIGN KEY (specialist_id) REFERENCES specialist(id)   ON DELETE CASCADE
 );
 
 
 CREATE DOMAIN rating_type AS INT CHECK (VALUE BETWEEN 1 AND 5);
 CREATE TABLE rating(
-    id              SERIAL      PRIMARY KEY,
     order_id        INT,
     specialist_id   INT,
     rating          rating_type,
@@ -37,7 +36,7 @@ CREATE TABLE rating(
     updated_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
 
     PRIMARY KEY (order_id, specialist_id),
-    FOREIGN KEY (order_id)      REFERENCES order(id)      ON DELETE SET NULL,
+    FOREIGN KEY (order_id)      REFERENCES "order"(id)      ON DELETE SET NULL,
     FOREIGN KEY (specialist_id) REFERENCES specialist(id) ON DELETE SET NULL
 );
 
@@ -51,7 +50,7 @@ CREATE TABLE descriptive_asnwer(
     updated_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
     
     PRIMARY KEY (order_id, question_id),
-    FOREIGN KEY (order_id) REFERENCES order(id) ON DELETE CASCADE,
+    FOREIGN KEY (order_id) REFERENCES "order"(id) ON DELETE CASCADE,
     FOREIGN KEY (question_id) REFERENCES question(id) ON DELETE CASCADE
 );
 
@@ -64,7 +63,7 @@ CREATE TABLE descriptive_asnwer(
     updated_at  TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
     
     PRIMARY KEY (order_id, question_id),
-    FOREIGN KEY (order_id)    REFERENCES order(id)      ON DELETE CASCADE,
+    FOREIGN KEY (order_id)    REFERENCES "order"(id)      ON DELETE CASCADE,
     FOREIGN KEY (question_id) REFERENCES question(id)   ON DELETE CASCADE
 );
 
@@ -76,7 +75,7 @@ CREATE TABLE multiple_choise_answer(
     updated_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
     
     PRIMARY KEY (order_id, question_id, choice_id),
-    FOREIGN KEY (order_id) REFERENCES order(id) ON DELETE CASCADE,
+    FOREIGN KEY (order_id) REFERENCES "order"(id) ON DELETE CASCADE,
     FOREIGN KEY (question_id) REFERENCES question(id) ON DELETE CASCADE,
     FOREIGN KEY (choice_id) REFERENCES choice(id) ON DELETE CASCADE
 )

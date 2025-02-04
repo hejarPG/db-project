@@ -1,5 +1,3 @@
-CREATE TYPE sex_enum AS ENUM('male', 'female');
-
 CREATE TABLE customer(
     id              SERIAL          PRIMARY KEY,
     first_name      VARCHAR(255)    NOT NULL,
@@ -8,7 +6,7 @@ CREATE TABLE customer(
     password        VARCHAR(72)     NOT NULL,
     city_id         INT,
     sex             sex_enum,
-    birthdate       DATETIME,
+    birthdate       DATE,
     image_uri       TEXT,
     is_active       BOOLEAN         DEFAULT TRUE,
     created_at                  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

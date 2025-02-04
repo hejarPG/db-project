@@ -18,6 +18,3 @@ CREATE TABLE city(
 
     FOREIGN KEY (province_id) REFERENCES province(id) ON DELETE CASCADE
 )
-
-
-SELECT * FROM city

@@ -1,3 +1,5 @@
+CREATE TYPE available_place_enum AS ENUM('customer', 'specialist', 'both');
+
 CREATE TABLE category(
 	id 			SERIAL 			PRIMARY KEY,
 	name		VARCHAR(255)  	NOT NULL,
@@ -27,7 +29,7 @@ CREATE TABLE service(
 	subcategory_name	VARCHAR(255),
 	name 				VARCHAR(255) 	NOT NULL,
 	description 		TEXT,
-	available_at		avalable_palce_enum,
+	available_at		available_place_enum,
 	image_uri			TEXT,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -35,9 +37,3 @@ CREATE TABLE service(
 	UNIQUE (category_id, subcategory_name, name),
 	FOREIGN KEY (category_id, subcategory_name) REFERENCES subcategory(category_id, name)
 );
-
--- DROP TABLE service CASCADE;
--- DROP TABLE subcategory CASCADE;
--- DROP TABLE category CASCADE;
-
--- SELECT * FROM service
