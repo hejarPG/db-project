@@ -1,6 +1,4 @@
-CREATE DOMAIN rating_type AS INT
-    CHECK (VALUE BETWEEN 1 AND 5);
-
+CREATE TYPE sex_enum AS ENUM('male', 'female');
 CREATE TYPE available_place_enum AS ENUM('customer', 'specialist', 'both');
 
 CREATE TABLE specialist(
