@@ -1,4 +1,4 @@
-CREATE TABLE descriptive_asnwer(
+CREATE TABLE descriptive_answer(
     order_id INT,
     question_id INT,
     asnwer TEXT,
@@ -11,7 +11,7 @@ CREATE TABLE descriptive_asnwer(
     FOREIGN KEY (question_id) REFERENCES question(id) ON DELETE CASCADE
 );
 
-CREATE TABLE numeric_asnwer(
+CREATE TABLE numeric_answer(
     order_id    INT,
     question_id INT,
     asnwer      REAL,
