@@ -18,3 +18,6 @@ CREATE TABLE city(
 
     FOREIGN KEY (province_id) REFERENCES province(id) ON DELETE CASCADE
 )
+
+
+select province.name, city.name from city join province on province.id = city.province_id
