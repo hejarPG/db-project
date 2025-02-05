@@ -36,7 +36,3 @@ CREATE TABLE specialist_service_certificate(
     FOREIGN KEY (service_id, specialist_id) REFERENCES specialist_service(service_id, specialist_id) ON DELETE CASCADE,
     FOREIGN KEY (certificate_id)            REFERENCES certificate(id) ON DELETE CASCADE
 )
-
--- select * from spe where specialist_id=1
--- drop table specialist_service_certificate
-select * from specialist_service_certificate

@@ -32,6 +32,3 @@ CREATE TABLE specialist_service(
     FOREIGN KEY (service_id)    REFERENCES service(id)      ON DELETE CASCADE,
     FOREIGN KEY (specialist_id) REFERENCES specialist(id)   ON DELETE CASCADE
 )
-
-select * from specialist_service where specialist_id=1
--- drop table spec.

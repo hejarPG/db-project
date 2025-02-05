@@ -10,8 +10,6 @@ CREATE TABLE descriptive_answer(
     FOREIGN KEY (question_id) REFERENCES question(id) ON DELETE CASCADE
 );
 
-SELECT * from numeric_answer
-
 CREATE TABLE numeric_answer(
     order_id    INT,
     question_id INT,

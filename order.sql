@@ -28,7 +28,6 @@ CREATE TABLE offer(
     FOREIGN KEY (specialist_id) REFERENCES specialist(id)   ON DELETE CASCADE
 );
 
-SELECT * from offer LIMIT 10
 
 CREATE TABLE rating(
     order_id        INT,
@@ -42,6 +41,3 @@ CREATE TABLE rating(
     FOREIGN KEY (order_id)      REFERENCES "order"(id)      ON DELETE SET NULL,
     FOREIGN KEY (specialist_id) REFERENCES specialist(id) ON DELETE SET NULL
 );
-
-
-select * from rating

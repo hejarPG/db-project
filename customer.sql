@@ -16,5 +16,3 @@ CREATE TABLE customer(
 
     FOREIGN KEY (city_id) REFERENCES city(id) ON DELETE SET NULL
 );
-
-SELECT * from customer limit 10
