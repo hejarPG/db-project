@@ -24,7 +24,7 @@ CREATE TABLE numeric_answer(
     FOREIGN KEY (question_id) REFERENCES question(id)   ON DELETE CASCADE
 );
 
-CREATE TABLE multiple_choise_answer(
+CREATE TABLE multiple_choice_answer(
     order_id int,
     question_id int,
     choice_id int,
