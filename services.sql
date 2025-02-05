@@ -37,3 +37,6 @@ CREATE TABLE service(
 	UNIQUE (category_id, subcategory_name, name),
 	FOREIGN KEY (category_id, subcategory_name) REFERENCES subcategory(category_id, name)
 );
+
+
+SELECT * FROM service
