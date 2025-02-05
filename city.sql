@@ -20,4 +20,6 @@ CREATE TABLE city(
 )
 
 
-select province.name, city.name from city join province on province.id = city.province_id
+select * from city
+drop table city;
+drop table province

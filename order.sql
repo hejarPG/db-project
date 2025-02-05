@@ -28,12 +28,12 @@ CREATE TABLE offer(
     FOREIGN KEY (specialist_id) REFERENCES specialist(id)   ON DELETE CASCADE
 );
 
+SELECT * from offer LIMIT 10
 
-CREATE DOMAIN rating_type AS INT CHECK (VALUE BETWEEN 1 AND 5);
 CREATE TABLE rating(
     order_id        INT,
     specialist_id   INT,
-    rating          rating_type,
+    rating          INT         CHECK (rating BETWEEN 1 AND 5),
     comment         TEXT,
     created_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
     updated_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
@@ -43,3 +43,5 @@ CREATE TABLE rating(
     FOREIGN KEY (specialist_id) REFERENCES specialist(id) ON DELETE SET NULL
 );
 
+
+select * from rating

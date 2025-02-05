@@ -2,9 +2,11 @@ CREATE TABLE customer(
     id              SERIAL          PRIMARY KEY,
     first_name      VARCHAR(255)    NOT NULL,
     last_name       VARCHAR(255)    NOT NULL,
-    phone_number    VARCHAR(20)     UNIQUE NOT NULL,
+    phone_number    VARCHAR(35)     UNIQUE NOT NULL,
     password        VARCHAR(72)     NOT NULL,
     city_id         INT,
+    location        Point,
+    address         TEXT,
     sex             sex_enum,
     birthdate       DATE,
     image_uri       TEXT,
@@ -15,3 +17,4 @@ CREATE TABLE customer(
     FOREIGN KEY (city_id) REFERENCES city(id) ON DELETE SET NULL
 );
 
+SELECT * from customer limit 10

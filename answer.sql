@@ -1,8 +1,7 @@
 CREATE TABLE descriptive_answer(
     order_id INT,
     question_id INT,
-    asnwer TEXT,
-    is_nullable BOOLEAN DEFAULT FALSE,
+    answer TEXT,
     created_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
     updated_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
     
@@ -11,10 +10,12 @@ CREATE TABLE descriptive_answer(
     FOREIGN KEY (question_id) REFERENCES question(id) ON DELETE CASCADE
 );
 
+SELECT * from numeric_answer
+
 CREATE TABLE numeric_answer(
     order_id    INT,
     question_id INT,
-    asnwer      REAL,
+    answer      REAL,
     is_nullable BOOLEAN     DEFAULT FALSE,
     created_at  TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
     updated_at  TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,

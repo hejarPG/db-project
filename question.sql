@@ -21,3 +21,5 @@ CREATE TABLE choice (
 
     FOREIGN KEY (question_id) REFERENCES question(id) ON DELETE CASCADE
 );
+
+select count(*) from question where "type"='multiple choice'

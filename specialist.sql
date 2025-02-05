@@ -4,11 +4,12 @@ CREATE TABLE specialist(
     id                  SERIAL          PRIMARY KEY,
     first_name          VARCHAR(100)    NOT NULL,
     last_name           VARCHAR(100)    NOT NULL,
-    phone_number        VARCHAR(20)     UNIQUE NOT NULL,
+    phone_number        VARCHAR(30)     UNIQUE NOT NULL,
     sex                 sex_enum,
     image_uri           TEXT,
     city_id             INT,
     location            POINT,
+    address             TEXT,
     operating_radius    SMALLINT        CHECK(operating_radius > 0),
     service_category_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -22,7 +23,7 @@ CREATE TABLE specialist(
 CREATE TABLE specialist_service(
     service_id      INT NOT NULL,
     specialist_id   INT NOT NULL,
-    avalable_at     available_place_enum,
+    available_at     available_place_enum,
     offered_price   DECIMAL(12, 2),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -31,3 +32,6 @@ CREATE TABLE specialist_service(
     FOREIGN KEY (service_id)    REFERENCES service(id)      ON DELETE CASCADE,
     FOREIGN KEY (specialist_id) REFERENCES specialist(id)   ON DELETE CASCADE
 )
+
+select * from specialist_service where specialist_id=1
+-- drop table spec.
