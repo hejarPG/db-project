@@ -1,8 +1,11 @@
+CREATE TYPE status_enum AS ENUM('finding specialist', 'in progress', 'finished', 'canceled');
+
 CREATE TABLE "order"(
     id              SERIAL      PRIMARY KEY,
     customer_id     INT,
     service_id      INT,
     specialist_id   INT,
+    status          status_enum DEFAULT 'finding specialist',
     created_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
     updated_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
 
@@ -40,42 +43,3 @@ CREATE TABLE rating(
     FOREIGN KEY (specialist_id) REFERENCES specialist(id) ON DELETE SET NULL
 );
 
-
-CREATE TABLE descriptive_asnwer(
-    order_id INT,
-    question_id INT,
-    asnwer TEXT,
-    is_nullable BOOLEAN DEFAULT FALSE,
-    created_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
-    updated_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
-    
-    PRIMARY KEY (order_id, question_id),
-    FOREIGN KEY (order_id) REFERENCES "order"(id) ON DELETE CASCADE,
-    FOREIGN KEY (question_id) REFERENCES question(id) ON DELETE CASCADE
-);
-
-CREATE TABLE descriptive_asnwer(
-    order_id    INT,
-    question_id INT,
-    asnwer      REAL,
-    is_nullable BOOLEAN     DEFAULT FALSE,
-    created_at  TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
-    updated_at  TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
-    
-    PRIMARY KEY (order_id, question_id),
-    FOREIGN KEY (order_id)    REFERENCES "order"(id)      ON DELETE CASCADE,
-    FOREIGN KEY (question_id) REFERENCES question(id)   ON DELETE CASCADE
-);
-
-CREATE TABLE multiple_choise_answer(
-    order_id int,
-    question_id int,
-    choice_id int,
-    created_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
-    updated_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
-    
-    PRIMARY KEY (order_id, question_id, choice_id),
-    FOREIGN KEY (order_id) REFERENCES "order"(id) ON DELETE CASCADE,
-    FOREIGN KEY (question_id) REFERENCES question(id) ON DELETE CASCADE,
-    FOREIGN KEY (choice_id) REFERENCES choice(id) ON DELETE CASCADE
-)
