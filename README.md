@@ -7,7 +7,7 @@ This project is a database implementation for an online platform that connects p
 The database follows a structured approach to organize and manage platform data effectively. It includes the following key components:
 
 ### 1. **Users Table**
-   - Stores user details such as name, contact information, and account type (service provider or customer).
+   - Stores user details such as name, contact information, and account type (Service Provider or Customer).
    - Tracks user authentication data (hashed passwords, login details).
    - Manages user ratings and reviews.
 
